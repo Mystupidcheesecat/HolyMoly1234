@@ -20,6 +20,9 @@
             --dark: #2a2a3c;
             --light: #f5f5f7;
             --accent: #ff6584;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --error: #F44336;
         }
 
         html {
@@ -72,6 +75,28 @@
             background: var(--secondary);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--accent);
+            box-shadow: 0 4px 15px rgba(255, 101, 132, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: #e0557a;
+            box-shadow: 0 6px 20px rgba(255, 101, 132, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
         }
 
         .section-title {
@@ -156,6 +181,14 @@
         }
 
         .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active:after {
             width: 100%;
         }
 
@@ -274,6 +307,13 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
         }
 
         /* Portfolio Section */
@@ -310,6 +350,7 @@
         .portfolio-img {
             height: 200px;
             overflow: hidden;
+            position: relative;
         }
 
         .portfolio-img img {
@@ -321,6 +362,35 @@
 
         .portfolio-item:hover .portfolio-img img {
             transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(108, 99, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-overlay a:hover {
+            transform: scale(1.2);
         }
 
         .portfolio-info {
@@ -416,6 +486,100 @@
             border: none;
         }
 
+        /* Gaming Section */
+        .gaming {
+            background: var(--light);
+        }
+
+        .gaming-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .gaming-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 200px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-img {
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .game-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 15px;
+        }
+
+        .game-info h4 {
+            margin-bottom: 10px;
+        }
+
+        .game-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
         /* Contact Section */
         .contact {
             background: white;
@@ -476,6 +640,25 @@
             resize: vertical;
         }
 
+        .form-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(76, 175, 80, 0.1);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .form-message.error {
+            background: rgba(244, 67, 54, 0.1);
+            color: var(--error);
+            border: 1px solid var(--error);
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -534,6 +717,11 @@
             align-items: center;
             gap: 10px;
             z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .music-player.hidden {
+            transform: translateX(150%);
         }
 
         .music-controls {
@@ -558,6 +746,142 @@
             font-size: 0.9rem;
         }
 
+        .toggle-music {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .toggle-music:hover {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -579,6 +903,11 @@
                 opacity: 1;
                 transform: translateX(0) translateY(-50%);
             }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Responsive Styles */
@@ -643,6 +972,23 @@
             .video-wrapper iframe {
                 height: 300px;
             }
+
+            .gaming-stats {
+                flex-direction: column;
+            }
+
+            .music-player {
+                bottom: 80px;
+                right: 20px;
+            }
+
+            .toggle-music {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 150px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -671,6 +1017,11 @@
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <!-- Header -->
     <header id="header">
         <div class="container">
@@ -680,26 +1031,27 @@
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#multimedia">Multimedia</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="#gaming" class="nav-link">Gaming</a></li>
+                    <li><a href="#multimedia" class="nav-link">Multimedia</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-   <section class="hero" id="home">
+    <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
                 <h1>Ivyn Christian Casipe</h1>
                 <p>I'm a 24-year-old IT college student at Lapu-Lapu City College with a strong passion for technology and gaming. I enjoy exploring new trends in tech, building my skills in programming and networking, and spending my free time playing video games.</p>
                 <div class="hero-btns">
                     <a href="#portfolio" class="btn">View My Work</a>
-                    <a href="#gaming" class="btn btn-gaming">My Gaming Journey</a>
-                    <a href="#multimedia" class="btn btn-multimedia">Multimedia Projects</a>
+                    <a href="#gaming" class="btn btn-secondary">My Gaming Journey</a>
+                    <a href="#multimedia" class="btn btn-outline">Multimedia Projects</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -707,7 +1059,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -749,6 +1100,10 @@
                 <div class="portfolio-item" id="portfolio-item-1">
                     <div class="portfolio-img">
                         <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Project 1">
+                        <div class="portfolio-overlay">
+                            <a href="#" class="view-project"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="view-details"><i class="fas fa-search"></i></a>
+                        </div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Personal Projects</h3>
@@ -758,6 +1113,10 @@
                 <div class="portfolio-item" id="portfolio-item-2">
                     <div class="portfolio-img">
                         <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Project 2">
+                        <div class="portfolio-overlay">
+                            <a href="#" class="view-project"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="view-details"><i class="fas fa-search"></i></a>
+                        </div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Academic Work</h3>
@@ -767,6 +1126,10 @@
                 <div class="portfolio-item" id="portfolio-item-3">
                     <div class="portfolio-img">
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Project 3">
+                        <div class="portfolio-overlay">
+                            <a href="#" class="view-project"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="view-details"><i class="fas fa-search"></i></a>
+                        </div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Creative Endeavors</h3>
@@ -777,137 +1140,122 @@
         </div>
     </section>
 
+    <!-- Gaming Section -->
+    <section class="gaming" id="gaming">
+        <div class="container">
+            <h2 class="section-title">My Gaming Journey</h2>
+            <div class="gaming-content">
+                <div class="gaming-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="stat-number" id="games-played">50+</div>
+                        <div class="stat-label">Games Played</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-number" id="achievements">120</div>
+                        <div class="stat-label">Achievements</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-number" id="hours-played">1000+</div>
+                        <div class="stat-label">Hours Played</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number" id="gaming-friends">25</div>
+                        <div class="stat-label">Gaming Friends</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="text-align: center; margin-bottom: 30px;">Favorite Games</h3>
+                    <div class="games-grid">
+                        <div class="game-card">
+                            <div class="game-img">
+                                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Game 1">
+                            </div>
+                            <div class="game-info">
+                                <h4>Action Games</h4>
+                                <p>Fast-paced games that test reflexes and strategy.</p>
+                            </div>
+                        </div>
+                        <div class="game-card">
+                            <div class="game-img">
+                                <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Game 2">
+                            </div>
+                            <div class="game-info">
+                                <h4>RPG Games</h4>
+                                <p>Immersive stories and character development.</p>
+                            </div>
+                        </div>
+                        <div class="game-card">
+                            <div class="game-img">
+                                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Game 3">
+                            </div>
+                            <div class="game-info">
+                                <h4>Strategy Games</h4>
+                                <p>Games that challenge critical thinking and planning.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Multimedia Section -->
     <section class="multimedia" id="multimedia">
-    <div class="container">
-        <h2 class="section-title">My Multimedia Activities</h2>
-        <div class="multimedia-container">
+        <div class="container">
+            <h2 class="section-title">My Multimedia Activities</h2>
+            <div class="multimedia-container">
+                <!-- Photos Section -->
+                <div class="multimedia-item" id="multimedia-photos">
+                    <h3>My Photos</h3>
+                    <div class="photos-container">
+                        <!-- Photo 1 -->
+                        <div class="photo-card">
+                            <a href="omg.jpg" target="_blank" class="photo-link">
+                                <img src="omg.jpg" alt="Personal Photo 1">
+                                <div class="photo-info">
+                                    <h4>Biography</h4>
+                                    <p>A glimpse into my daily life and interests</p>
+                                </div>
+                            </a>
+                        </div>
 
-            <!-- Photos Section -->
-            <div class="multimedia-item" id="multimedia-photos">
-                <h3>My Photos</h3>
-                <div class="photos-container">
-                    <!-- Photo 1 -->
-                    <div class="photo-card">
-                        <a href="omg.jpg" target="_blank" class="photo-link">
-                            <img src="omg.jpg" alt="Personal Photo 1">
-                            <div class="photo-info">
-                                <h4>Biography</h4>
-                                <p>A glimpse into my daily life and interests</p>
-                            </div>
-                        </a>
+                        <!-- Photo 2 -->
+                        <div class="photo-card">
+                            <a href="Holy.jpg" target="_blank" class="photo-link">
+                                <img src="Holy.jpg" alt="Before and After">
+                                <div class="photo-info">
+                                    <h4>Before and After</h4>
+                                    <p>Transformation and progress over time</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
+                </div>
 
-                    <!-- Photo 2 -->
-                    <div class="photo-card">
-                        <a href="Holy.jpg" target="_blank" class="photo-link">
-                            <img src="Holy.jpg" alt="Before and After">
-                            <div class="photo-info">
-                                <h4>Before and After</h4>
-                                <p>Transformation and progress over time</p>
-                            </div>
-                        </a>
+                <!-- Video Section -->
+                <div class="multimedia-item" id="multimedia-video">
+                    <h3>My Video</h3>
+                    <div class="video-container">
+                        <div class="video-wrapper">
+                            <iframe src="https://drive.google.com/file/d/1SuLJSkAG7qqi2ZltPab6l4hb3RgagQfm/preview" allow="autoplay"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Video Section -->
-            <div class="multimedia-item" id="multimedia-video">
-                <h3>My Video</h3>
-                <div class="video-container">
-                    <div class="video-wrapper">
-                        <iframe src="https://drive.google.com/file/d/1SuLJSkAG7qqi2ZltPab6l4hb3RgagQfm/preview" allow="autoplay"></iframe>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
-
-<style>
-/* Layout styling */
-.multimedia {
-    padding: 50px 20px;
-    background: #f9f9f9;
-    font-family: "Poppins", sans-serif;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 30px;
-}
-
-.multimedia-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-}
-
-/* Photo cards */
-.photos-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.photo-card {
-    width: 250px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: white;
-}
-
-.photo-card:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-}
-
-.photo-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.photo-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.photo-info {
-    padding: 10px 15px;
-    text-align: center;
-}
-
-.photo-info h4 {
-    margin: 5px 0;
-    font-size: 1.1em;
-    color: #333;
-}
-
-.photo-info p {
-    font-size: 0.9em;
-    color: #666;
-}
-
-/* Video */
-.video-container {
-    text-align: center;
-}
-
-.video-wrapper iframe {
-    width: 560px;
-    height: 315px;
-    border-radius: 15px;
-    border: none;
-}
-</style>
+    </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -932,7 +1280,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>casipe.ivynchristian@llcc.edu.ph</p>
+                            <p>ivyn.casipe@example.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -941,25 +1289,26 @@
                         </div>
                         <div>
                             <h4>Phone</h4>
-                            <p>0960929555</p>
+                            <p>+63 (XXX) XXX-XXXX</p>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                            <textarea class="form-control" id="message" placeholder="Your Message" required></textarea>
                         </div>
                         <button type="submit" class="btn">Send Message</button>
+                        <div class="form-message" id="form-message"></div>
                     </form>
                 </div>
             </div>
@@ -986,8 +1335,18 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Music Player Toggle -->
+    <div class="toggle-music" id="toggle-music">
+        <i class="fas fa-music"></i>
+    </div>
+
     <!-- Music Player -->
-    <div class="music-player">
+    <div class="music-player hidden" id="music-player">
         <div class="music-info">
             Now Playing: Chill Vibes
         </div>
@@ -1007,22 +1366,188 @@
         </audio>
     </div>
 
+    <!-- Project Modal -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <h2 id="modal-title">Project Title</h2>
+                <div id="modal-content">
+                    <p>Project details will appear here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Mobile Menu Toggle
+        // DOM Elements
         const menuToggle = document.getElementById('menu-toggle');
         const navLinks = document.getElementById('nav-links');
+        const header = document.getElementById('header');
+        const loader = document.getElementById('loader');
+        const backToTop = document.getElementById('back-to-top');
+        const toggleMusic = document.getElementById('toggle-music');
+        const musicPlayer = document.getElementById('music-player');
+        const bgMusic = document.getElementById('bg-music');
+        const playBtn = document.getElementById('play-btn');
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('form-message');
+        const projectModal = document.getElementById('project-modal');
+        const modalClose = document.getElementById('modal-close');
+        const navLinksAll = document.querySelectorAll('.nav-link');
 
+        // Page Load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Mobile Menu Toggle
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
         });
 
         // Header Scroll Effect
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
+            }
+
+            // Back to Top Button
+            if (window.scrollY > 500) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+
+            // Active Navigation
+            const sections = document.querySelectorAll('section');
+            const navLi = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLi.forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('href') === `#${current}`) {
+                    li.classList.add('active');
+                }
+            });
+        });
+
+        // Back to Top
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Music Player
+        let isPlaying = false;
+        let isMusicVisible = false;
+
+        toggleMusic.addEventListener('click', () => {
+            isMusicVisible = !isMusicVisible;
+            if (isMusicVisible) {
+                musicPlayer.classList.remove('hidden');
+            } else {
+                musicPlayer.classList.add('hidden');
+            }
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                bgMusic.play();
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Form Submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (name && email && message) {
+                // Simulate form submission
+                formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+                formMessage.classList.remove('error');
+                formMessage.classList.add('success');
+                formMessage.style.display = 'block';
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                formMessage.textContent = 'Please fill in all required fields.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+                formMessage.style.display = 'block';
+            }
+        });
+
+        // Project Modal
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+        
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const portfolioItem = button.closest('.portfolio-item');
+                const title = portfolioItem.querySelector('h3').textContent;
+                const description = portfolioItem.querySelector('p').textContent;
+                
+                document.getElementById('modal-title').textContent = title;
+                document.getElementById('modal-content').innerHTML = `
+                    <p>${description}</p>
+                    <p>This is a detailed view of the project. More information about the technologies used, challenges faced, and outcomes achieved would go here.</p>
+                    <div style="margin-top: 20px;">
+                        <h3>Technologies Used</h3>
+                        <ul>
+                            <li>HTML/CSS</li>
+                            <li>JavaScript</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                `;
+                
+                projectModal.classList.add('active');
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            projectModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.classList.remove('active');
             }
         });
 
@@ -1077,30 +1602,6 @@
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('load', checkScroll);
 
-        // Music Player
-        const bgMusic = document.getElementById('bg-music');
-        const playBtn = document.getElementById('play-btn');
-        let isPlaying = false;
-
-        playBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                bgMusic.pause();
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
-            } else {
-                bgMusic.play();
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            }
-            isPlaying = !isPlaying;
-        });
-
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-        });
-
         // Smooth Scrolling for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1118,10 +1619,71 @@
                     
                     // Close mobile menu if open
                     navLinks.classList.remove('active');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
                 }
             });
         });
+
+        // Gaming Stats Animation
+        function animateStats() {
+            const gamesPlayed = document.getElementById('games-played');
+            const achievements = document.getElementById('achievements');
+            const hoursPlayed = document.getElementById('hours-played');
+            const gamingFriends = document.getElementById('gaming-friends');
+            
+            let gamesCount = 0;
+            let achievementsCount = 0;
+            let hoursCount = 0;
+            let friendsCount = 0;
+            
+            const gamesTarget = 50;
+            const achievementsTarget = 120;
+            const hoursTarget = 1000;
+            const friendsTarget = 25;
+            
+            const interval = setInterval(() => {
+                if (gamesCount < gamesTarget) {
+                    gamesCount += 5;
+                    gamesPlayed.textContent = gamesCount + '+';
+                }
+                
+                if (achievementsCount < achievementsTarget) {
+                    achievementsCount += 6;
+                    achievements.textContent = achievementsCount;
+                }
+                
+                if (hoursCount < hoursTarget) {
+                    hoursCount += 50;
+                    hoursPlayed.textContent = hoursCount + '+';
+                }
+                
+                if (friendsCount < friendsTarget) {
+                    friendsCount += 1;
+                    gamingFriends.textContent = friendsCount;
+                }
+                
+                if (gamesCount >= gamesTarget && achievementsCount >= achievementsTarget && 
+                    hoursCount >= hoursTarget && friendsCount >= friendsTarget) {
+                    clearInterval(interval);
+                }
+            }, 50);
+        }
+        
+        // Initialize stats animation when gaming section is in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const gamingSection = document.getElementById('gaming');
+        if (gamingSection) {
+            observer.observe(gamingSection);
+        }
     </script>
 </body>
 </html>
-
